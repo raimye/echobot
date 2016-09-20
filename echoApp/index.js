@@ -1,9 +1,5 @@
 
-var pubnub = require("pubnub")({
-    ssl           : true,  // <- enable TLS Tunneling over TCP 
-    publish_key   : "pub-c-....bd09a3eff137",
-    subscribe_key : "sub-c-.....02ee2ddab7fe"
-});
+var PubNub = require('pubnub')
 
     
 // Alexa SDK for JavaScript v1.0.00
@@ -82,40 +78,61 @@ Echobot.prototype.intentHandlers = {
    
     },
     Initiate: function (intent, session, response) {
-               var initiateMessage = {
+                var initiateMessage = {
                         "command" : "initiate",
                         "sessionId" : session.sessionId
                     };
-               console.log(pubnub.get_version());
+                console.log(pubnub.get_version());
                 pubnub.publish({ 
                     channel   : 'my_channel',
+			    pubnub = new PubNub({
+					ssl : true,  // <- enable TLS Tunneling over TCP 
+					publish_key   : "pub-c-efa67c83-2f0f-416d-9b0a-12ed14696ae4",
+					subscribe_key : "sub-c-fc6f1b50-7e99-11e6-8a0d-0619f8945a4f",
+					logVerbosity: true
+				});
+				console.log(pubnub.getVersion());
+			    pubnub.publish({ 
                     message   : initiateMessage,
-                    callback  : function(e) { 
-                        console.log( "SUCCESS!", e ); 
-                        response.tell("Drone is ready to fly");
-                        },
-                    error     : function(e) { 
-                        response.tellWithCard("Could not connect", "Drone", "Could not connect");
-                        console.log( "FAILED! RETRY PUBLISH!", e ); }
-                });          
+					channel   : 'my_channel',
+			   },
+					function (status) {
+						if (status.error) {
+							response.tellWithCard("Could not connect", "Drone", "Could not connect");
+							console.log("FAILED! RETRY PUBLISH!", status)
+						} else {
+							console.log( "SUCCESS!", status ); 
+							response.tell("Drone is ready to fly")
+						}
+					}
+                );          
     },
     TakeOff: function (intent, session, response) {
-               var takeOffmessage = {
+                var takeOffmessage = {
                         "command" : "takeOff",
                         "sessionId" : session.sessionId
                     };
-               console.log(pubnub.get_version());
+			    pubnub = new PubNub({
+					ssl : true,  // <- enable TLS Tunneling over TCP 
+					publish_key   : "pub-c-efa67c83-2f0f-416d-9b0a-12ed14696ae4",
+					subscribe_key : "sub-c-fc6f1b50-7e99-11e6-8a0d-0619f8945a4f",
+					logVerbosity: true
+				});
+				console.log(pubnub.getVersion());
                 pubnub.publish({ 
-                    channel   : 'my_channel',
                     message   : takeOffmessage,
-                    callback  : function(e) { 
-                         console.log( "SUCCESS!", e ); 
-                         response.tell("Drone is flying");
-                        },
-                    error     : function(e) { 
-                        response.tellWithCard("Could not connect", "Drone", "Could not connect");
-                        console.log( "FAILED! RETRY PUBLISH!", e ); }
-                });          
+					channel   : 'my_channel',
+			   },
+					function (status) {
+						if (status.error) {
+							response.tellWithCard("Could not connect", "Drone", "Could not connect");
+							console.log("FAILED! RETRY PUBLISH!", status)
+						} else {
+							console.log( "SUCCESS!", status ); 
+							response.tell("Drone is flying")
+						}
+					}
+                );              
     },
     Land: function (intent, session, response) {
 
@@ -123,19 +140,28 @@ Echobot.prototype.intentHandlers = {
                         "command" : "land",
                         "sessionId" : session.sessionId
                     };
-               console.log(pubnub.get_version());
-               //response.setShouldEndSession(true);
+			    pubnub = new PubNub({
+					ssl : true,  // <- enable TLS Tunneling over TCP 
+					publish_key   : "pub-c-efa67c83-2f0f-416d-9b0a-12ed14696ae4",
+					subscribe_key : "sub-c-fc6f1b50-7e99-11e6-8a0d-0619f8945a4f",
+					logVerbosity: true
+				});
+				console.log(pubnub.getVersion());
+                //response.setShouldEndSession(true);
                 pubnub.publish({ 
-                    channel   : 'my_channel',
                     message   : landMessage,
-                    callback  : function(e) { 
-                         console.log( "SUCCESS!", e ); 
-                         response.tell("Going down");
-                        },
-                    error     : function(e) { 
-                        response.tellWithCard("Could not connect", "Drone", "Could not connect");
-                        console.log( " hFAILED! RETRY PUBLISH!", e ); }
-                });          
+					channel   : 'my_channel',
+			   },
+					function (status) {
+						if (status.error) {
+							response.tellWithCard("Could not connect", "Drone", "Could not connect");
+							console.log("FAILED! RETRY PUBLISH!", status)
+						} else {
+							console.log( "SUCCESS!", status ); 
+							response.tell("Going down")
+						}
+					}
+                );              
     },
     default: function (intent, session, response) {
         response.ask("I could not understand, please repeat.");
