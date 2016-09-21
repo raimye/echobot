@@ -15,12 +15,17 @@ This project is based on rondadag echobot project (https://github.com/rondagdag/
 4. Link your ARN number to your Alexa Skill endpoint
 5. Create a Swing node.js app in Raspberry Pi
 6. Edit Swing.js to include your PubNub credentials
-7. Run using node Swing.js
+7. Run using 
+```
+node Swing.js
+```
 
 ## Tests
 
-Run using node Swing.js
-
+Run using 
+```
+node Swing.js
+```
 ## Contributors
 
 Any contribution is welcomed.
