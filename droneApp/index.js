@@ -1,8 +1,4 @@
-var pubnub = require("pubnub")({
-	ssl: true, // <- enable TLS Tunneling over TCP
-	publish_key: "pub-c-9b38a227-9c98-42dd-af43-bd09a3eff137",
-	subscribe_key: "sub-c-6d9eb720-2f24-11e5-bda8-02ee2ddab7fe"
-});
+var PubNub = require("pubnub")
 
 var five = require("johnny-five");
 var board = new five.Board();
@@ -22,7 +18,12 @@ board.on("ready", function() {
 	//console.log("You can interact with the bargraph via the variable 'led'");
 	//console.log("e.g. led.stop();\n Hit control-d to exit.\n >> ");
 
-
+	pubnub = new PubNub({
+			ssl: true, // <- enable TLS Tunneling over TCP
+			publish_key: "pub-c-efa67c83-2f0f-416d-9b0a-12ed14696ae4",
+			subscribe_key: "sub-c-fc6f1b50-7e99-11e6-8a0d-0619f8945a4f",
+			logVerbosity: true
+		});
 	pubnub.subscribe({
 		channel: "my_channel",
 		callback: function(message) {
