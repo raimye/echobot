@@ -1,18 +1,18 @@
 {
-  "name": "echobot",
+  "name": "echoswing",
   "version": "0.0.1",
-  "description": "amazon echo drone bot",
+  "description": "Parrot Swing Amazon Echo drone control app",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rlyle78/echobot.git"
+    "url": "git+https://github.com/raimye/echoswing.git"
   },
-  "author": "Ron Dagdag",
+  "author": "Rémi Favre",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rlyle78/echobot/issues"
+    "url": "https://github.com/raimye/echoswing/issues"
   },
-  "homepage": "https://github.com/rlyle78/echobot#readme"
+  "homepage": "https://github.com/raimye/echoswin#readme"
 }
