@@ -31,7 +31,7 @@ var d = new Drone(process.env.UUID);
 
 d.connect(function() {
 	d.setup(function() {
-		console.log('Configured for Rolling Spider! ', d.name);
+		console.log('Configured for Parrot Swing! ', d.name);
 		d.flatTrim();
 		d.startPing();
 		d.flatTrim();
