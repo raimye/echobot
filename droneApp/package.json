@@ -1,11 +1,11 @@
 {
-  "name": "EchoBotDrone",
-  "description": "Echo bot Drone App",
+  "name": "Echo Swing",
+  "description": "Parrot Swing drone control app",
   "version": "0.0.1",
-  "main": "rollingspider.js",
+  "main": "swing.js",
   "dependencies": {
     "noble": "^1.0.2",
-    "pubnub": "^3.7.13",
+    "pubnub": "^4.0.10",
     "rolling-spider": "",
     "temporal": "^0.4.0"
   },
@@ -16,10 +16,7 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "contributors": [
-    "rlyle78@gmail.com"
-  ],
-  "license": "MIT",
+  "license": "MTI",
   "scripts": {
     "start": "node index.js"
   }
