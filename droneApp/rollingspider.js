@@ -7,12 +7,7 @@
  */
 'use strict';
 
-var pubnub = require("pubnub")({
-	ssl: true, // <- enable TLS Tunneling over TCP
-	publish_key: "pub-c-....-bd09a3eff137",
-	subscribe_key: "sub-c-....-02ee2ddab7fe"
-});
-
+var PubNub = require("pubnub")
 var RollingSpider = require("rolling-spider");
 var rollingSpider = new RollingSpider('d2edda91562142e988ffcb4a595f8cd9');
 var temporal = require('temporal');
@@ -23,7 +18,12 @@ rollingSpider.connect(function() {
 	rollingSpider.startPing();
 	rollingSpider.flatTrim();
 	console.log('Connected to drone', rollingSpider.name);
-
+	pubnub = new PubNub({
+			ssl: true, // <- enable TLS Tunneling over TCP
+			publish_key: "pub-c-efa67c83-2f0f-416d-9b0a-12ed14696ae4",
+			subscribe_key: "sub-c-fc6f1b50-7e99-11e6-8a0d-0619f8945a4f",
+			logVerbosity: true
+		});
 	pubnub.subscribe({
 		channel: "my_channel",
 		callback: function(message) {
@@ -40,13 +40,14 @@ rollingSpider.connect(function() {
 					break;
 				case "takeOff":
 					//code block
-					console.log("take Off");
+					console.log("take off");
 					rollingSpider.takeOff();
 					rollingSpider.flatTrim();
 
 					break;
 				case "land":
 					//code block
+					console.log("land");
 					rollingSpider.land();
 					break;
 				default:
