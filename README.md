@@ -1,10 +1,12 @@
+# Echoswing
+
 ## Synopsis
 
 This project aims at controlling a Parrot Swing drone using an Amazon Echo.
 
 ## Motivation
 
-This project is based on rondadag echobot project (https://github.com/rondagdag/echobot). Since I don't own a Parrot Rolling Spider and the PubNub node.js SDK has evolved, I'm trying to make it compatible with both.
+This project is based on Ron Dadag [echobot project](https://github.com/rondagdag/echobot). Since I don't own a Parrot Rolling Spider and the PubNub node.js SDK has evolved, I'm trying to make it compatible with both.
 
 ## Installation
 
@@ -29,3 +31,8 @@ node Swing.js
 ## Contributors
 
 Any contribution is welcomed.
+
+
+## Acknowledgments
+
+This project is largely based on [Ron Dagdag](https://github.com/rondagdag)'s work
