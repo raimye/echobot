@@ -9,7 +9,7 @@
 
 var PubNub = require("pubnub");
 var RollingSpider = require("rolling-spider");
-var rollingSpider = new RollingSpider('d2edda91562142e988ffcb4a595f8cd9');
+var rollingSpider = new RollingSpider();
 var temporal = require('temporal');
 // NEW CODE BELOW HERE
 
